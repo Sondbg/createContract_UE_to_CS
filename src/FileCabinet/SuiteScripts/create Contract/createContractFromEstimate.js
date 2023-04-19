@@ -68,7 +68,7 @@ define(['N/log', 'N/ui/dialog', 'N/url', 'N/record', 'N/search', 'N/runtime'],
 
 
                 } else {
-                    projectNum = ""
+                    projectNum.entityid = ""
                 }
 
                 setFieldValue(invoice, "tranid", `Договор ${projectNum.entityid}`);
@@ -122,6 +122,8 @@ define(['N/log', 'N/ui/dialog', 'N/url', 'N/record', 'N/search', 'N/runtime'],
 
                     log.debug("invoiceID", invoiceID)
 
+                }).catch((error)=>{
+                    log.error('error while in promise',error)
                 })
 
                 dialog.alert({
@@ -167,7 +169,7 @@ define(['N/log', 'N/ui/dialog', 'N/url', 'N/record', 'N/search', 'N/runtime'],
                     })
                 }
             } catch (e) {
-                log.error(e.message)
+                log.error("error on CS",e.message)
             }
         }
         return {
